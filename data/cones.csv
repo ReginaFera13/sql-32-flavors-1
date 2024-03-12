@@ -1,4 +1,4 @@
-id,cone_type,gluten_free,quantity
+cone_id,cone_type,gluten_free,quantity
 1,Waffle,false,3
 2,Waffle,true,1
 3,Sugar,false,2

@@ -1,4 +1,4 @@
-id,flavor_name,dairy_free,quantity
+flavor_id,flavor_name,dairy_free,quantity
 1,Vanilla,false,1
 2,Vanilla,true,1
 3,Chocolate,false,1

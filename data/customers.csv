@@ -1,4 +1,4 @@
-id,customer_name,total_spent,loyalty_points
+customer_id,customer_name,total_spent,loyalty_points
 1,Tiffany Lee,5,1
 2,Mikey Lewis,25,5
 3,Luc Odom,15,3
