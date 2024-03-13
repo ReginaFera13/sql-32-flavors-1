@@ -7,12 +7,16 @@ CREATE TABLE cones(
     quantity INT
 ); --no foreign
 
+\COPY cones FROM './data/cones.csv' WITH CSV HEADER;
+
 DROP TABLE IF EXISTS employees CASCADE;
 
 CREATE TABLE employees(
     employee_id SERIAL PRIMARY KEY,
     employee_name VARCHAR(50) NOT NULL UNIQUE
 ); --no foreign
+
+\COPY employees FROM './data/employees.csv' WITH CSV HEADER;
 
 DROP TABLE IF EXISTS flavors CASCADE;
 
@@ -23,6 +27,8 @@ CREATE TABLE flavors(
     quantity INT 
 ); --no foreign
 
+\COPY flavors FROM './data/flavors.csv' WITH CSV HEADER;
+
 DROP TABLE IF EXISTS customers CASCADE;
 
 CREATE TABLE customers(
@@ -32,6 +38,8 @@ CREATE TABLE customers(
     loyalty_points INT
 ); --no foreign
 
+\COPY customers FROM './data/customers.csv' WITH CSV HEADER;
+
 DROP TABLE IF EXISTS prizes;
 
 CREATE TABLE prizes(
@@ -40,12 +48,16 @@ CREATE TABLE prizes(
     loyalty_points_required INT NOT NULL
 ); --no foreign
 
+\COPY prizes FROM './data/prizes.csv' WITH CSV HEADER;
+
 DROP TABLE IF EXISTS stores CASCADE;
 
 CREATE TABLE stores(
     store_id SERIAL PRIMARY KEY,
     location VARCHAR(255) NOT NULL
 ); -- no foreign
+
+\COPY stores FROM './data/stores.csv' WITH CSV HEADER;
 
 DROP TABLE IF EXISTS timesheet;
 
@@ -59,6 +71,8 @@ CREATE TABLE timesheet(
     FOREIGN KEY (store_id) REFERENCES stores (store_id)
 ); --requ employee and store
 
+\COPY timesheet FROM './data/timesheet.csv' WITH CSV HEADER;
+
 DROP TABLE IF EXISTS employee_stores;
 
 CREATE TABLE employee_stores(
@@ -69,6 +83,8 @@ CREATE TABLE employee_stores(
     FOREIGN KEY (store_id) REFERENCES stores (store_id)
 ); --requ store and employee
 
+\COPY employee_stores FROM './data/employee_stores.csv' WITH CSV HEADER;
+
 DROP TABLE IF EXISTS store_managers;
 
 CREATE TABLE store_managers(
@@ -78,6 +94,8 @@ CREATE TABLE store_managers(
     FOREIGN KEY (employee_id) REFERENCES employees (employee_id),
     FOREIGN KEY (store_id) REFERENCES stores (store_id)
 ); --requ store and employee
+
+\COPY store_managers FROM './data/store_managers.csv' WITH CSV HEADER;
 
 DROP TABLE IF EXISTS sales;
 
@@ -94,15 +112,4 @@ CREATE TABLE sales(
     FOREIGN KEY (customer_id) REFERENCES customers (customer_id)
 ); --requ flavor, cone, store, and customer
 
------ COPY AND PASTE COMMANDS BELOW INTO SQL TERMINAL BECAUSE COPY COMMAND DOESN'T WORK RIGHT ON THE SQL FILES FOR SOME REASON ------
-
--- \COPY cones FROM '/home/reginafera13/codeplatoon/sql-32-flavors-1/data/cones.csv' WITH CSV HEADER;
--- \COPY customers FROM '/home/reginafera13/codeplatoon/sql-32-flavors-1/data/customers.csv' WITH CSV HEADER;
--- \COPY employees FROM '/home/reginafera13/codeplatoon/sql-32-flavors-1/data/employees.csv' WITH CSV HEADER;
--- \COPY flavors FROM '/home/reginafera13/codeplatoon/sql-32-flavors-1/data/flavors.csv' WITH CSV HEADER;
--- \COPY prizes FROM '/home/reginafera13/codeplatoon/sql-32-flavors-1/data/prizes.csv' WITH CSV HEADER;
--- \COPY stores FROM '/home/reginafera13/codeplatoon/sql-32-flavors-1/data/stores.csv' WITH CSV HEADER;
--- \COPY timesheet FROM '/home/reginafera13/codeplatoon/sql-32-flavors-1/data/timesheet.csv' WITH CSV HEADER;
--- \COPY employee_stores FROM '/home/reginafera13/codeplatoon/sql-32-flavors-1/data/employee_stores.csv' WITH CSV HEADER;
--- \COPY store_managers FROM '/home/reginafera13/codeplatoon/sql-32-flavors-1/data/store_managers.csv' WITH CSV HEADER;
--- \COPY sales FROM '/home/reginafera13/codeplatoon/sql-32-flavors-1/data/sales.csv' WITH CSV HEADER;
+\COPY sales FROM './data/sales.csv' WITH CSV HEADER;
